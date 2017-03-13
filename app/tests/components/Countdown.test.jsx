@@ -20,7 +20,7 @@ describe('Countdown', () => {
       expect(countdown.state.count).toBe(10);
       expect(countdown.state.countdownStatus).toBe('started');
 
-      setTimeout(() => {
+      setTimeout( () => {
         expect(countdown.state.count).toBe(9);
         done();
       }, 1001);
@@ -30,11 +30,35 @@ describe('Countdown', () => {
       var countdown = TestUtils.renderIntoDocument(<Countdown/>);
       countdown.handleSetCountdown(1);
 
-      setTimeout(() => {
+      setTimeout( () => {
         // count should stop at 0
         expect(countdown.state.count).toBe(0);
         done();
       }, 3001);
+    });
+    // asynchronous test needs 'done'
+    it('should pause countdown on paused status', (done) => {
+      var countdown = TestUtils.renderIntoDocument(<Countdown/>);
+      countdown.handleSetCountdown(3); // set countdown to 3
+      countdown.handleStatusChange('paused'); // pause the countdown
+
+      setTimeout( () => {
+        expect(countdown.state.count).toBe(3);
+        expect(countdown.state.countdownStatus).toBe('paused');
+        done();
+      }, 1001);
+    });
+
+    it('should pause countdown on paused status', (done) => {
+      var countdown = TestUtils.renderIntoDocument(<Countdown/>);
+      countdown.handleSetCountdown(3); // set countdown to 3
+      countdown.handleStatusChange('stopped'); // pause the countdown
+
+      setTimeout( () => {
+        expect(countdown.state.count).toBe(0);
+        expect(countdown.state.countdownStatus).toBe('stopped');
+        done();
+      }, 1001);
     });
   });
 });
