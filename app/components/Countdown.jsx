@@ -28,21 +28,8 @@ var Countdown = React.createClass({
       }
     }
   },
-  // // LifeCycle method that fires just before updating
-  // componentWillUpdate: function (nextProps, nextState) {
-  //
-  // },
-  // // LifeCycle method
-  // componentWillMount: function () {
-  //   console.log('component will mount');
-  // },
-  // // LifeCycle method
-  // componentDidMount: function () {
-  //   console.log('component did mount');
-  // },
-  // LifeCycle method
   componentWillUnmount: function () {
-    // console.log('component did unmount');
+    // user is leaving page
     clearInterval(this.timer); // get rid of the interval
     this.timer = undefined;
   },
@@ -74,7 +61,7 @@ var Countdown = React.createClass({
     var renderControlArea = () => {
       if (countdownStatus !== 'stopped') {
         return <Controls countdownStatus={countdownStatus} onStatusChange={this.handleStatusChange}/>;
-      } else {
+      } else { // countdownStatus === 'stopped'
         return <CountdownForm onSetCountdown={this.handleSetCountdown}/>
       }
     };

@@ -12,16 +12,12 @@ var Controls = React.createClass({
       this.props.onStatusChange(newStatus);
     }
   },
-  // LifeCycle method
-  // componentWillReceiveProps: function (newProps) {
-  //   console.log('component will receive props', newProps.countdownStatus);
-  // },
   render: function () {
     var {countdownStatus} = this.props;
     var renderStartStopButton = () => {
       if (countdownStatus === 'started') {
         return <button className="button secondary" onClick={this.onStatusChange('paused')}>Pause</button>
-      } else if (countdownStatus === 'paused') {
+      } else {
         return <button className="button primary" onClick={this.onStatusChange('started')}>Start</button>
       }
     };
