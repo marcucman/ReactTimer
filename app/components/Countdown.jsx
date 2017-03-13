@@ -1,20 +1,23 @@
 var React = require('react');
 var Clock = require('Clock');
-
-// var Countdown = () => {
-//   return (
-//     <div>
-//       <h1>Countdown.jsx</h1>
-//       <p>This is where the countdown will go</p>
-//     </div>
-//   )
-// };
+var CountdownForm = require('CountdownForm');
 
 var Countdown = React.createClass({
+  getInitialState: function () {
+    return {count: 0};
+  },
+  handleSetCountdown: function (seconds) {
+    this.setState({
+      count: seconds
+    });
+  },
   render: function () {
+    var {count} = this.state;
+
     return (
       <div>
-        <Clock totalSeconds={129}/>
+        <Clock totalSeconds={count}/>
+        <CountdownForm onSetCountdown={this.handleSetCountdown}/>
       </div>
     )
   }
