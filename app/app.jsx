@@ -5,8 +5,8 @@ var Main = require('Main');
 var Timer = require('Timer');
 var Countdown = require('Countdown');
 
-// Load foundation
-require('style!css!foundation-sites/dist/foundation.min.css'); // use style-loader and css-loader module
+// Load foundation, not needed after including sassLoader to webpack.config.js
+// require('style!css!foundation-sites/dist/foundation.min.css'); // use style-loader and css-loader module
 $(document).foundation(); // attach foundation to document
 
 // app css

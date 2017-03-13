@@ -5,7 +5,11 @@ module.exports = function (config) {
     browsers: ['Chrome'],
     singleRun: true,
     frameworks: ['mocha'],
-    files: ['app/tests/**/*.test.jsx'], // globbing patterns
+    files: [
+      'node_modules/jquery/dist/jquery.min.js', // use script-loader npm module
+      'node_modules/foundation-sites/dist/foundation.min.js', // use script-loader npm module
+      'app/tests/**/*.test.jsx'
+    ], // globbing patterns
     preprocessors: { // for the specified files, run these things
       'app/tests/**/*.test.jsx': ['webpack', 'sourcemap']
     },
