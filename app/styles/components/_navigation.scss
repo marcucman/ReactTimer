@@ -10,6 +10,10 @@
     display: inline;
     padding: 0;
   }
+
+  .active-link {
+    font-weight: bold;
+  }
 }
 // IS THE SAME AS
 // .top-bar .menu-text {}
